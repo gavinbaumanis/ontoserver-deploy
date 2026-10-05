@@ -3,7 +3,7 @@ name: ontoserver-indexer
 description: Runs a Kubernetes Job to index a SNOMED CT (or other) code system
   and publish to a syndication server
 type: application
-version: 0.2.1
+version: 0.3.0
 appVersion: "ctsa-6"
 home: https://ontoserver.csiro.au
 icon: https://raw.githubusercontent.com/aehrc/ontoserver-deploy/master/icons/ontoserver-indexer.png
