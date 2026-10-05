@@ -5,6 +5,66 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0](https://github.com/gavinbaumanis/ontoserver-deploy/compare/ontoserver-v0.5.2...ontoserver-v0.6.0) (2026-10-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ontoserver:** the chart no longer installs an ingress controller.
+
+### Added
+
+* **chart:** add ExternalSecret template for image pull secret ([33ad52c](https://github.com/gavinbaumanis/ontoserver-deploy/commit/33ad52ca7701930d9fad6bc08ecefbd45703065a))
+* **chart:** add imagePullSecret schema under externalSecret ([8e8765a](https://github.com/gavinbaumanis/ontoserver-deploy/commit/8e8765aaf5400c9a833912f8a5c8b91030b76361))
+* **chart:** add ontoserver.externalSecret.imagePullSecret values block ([e217232](https://github.com/gavinbaumanis/ontoserver-deploy/commit/e217232c4daae991cdba2974dea5fa3815078381))
+* **chart:** auto-wire external pull secret into imagePullSecrets ([3ab25fe](https://github.com/gavinbaumanis/ontoserver-deploy/commit/3ab25fe730412eeb9858f02e9ee5440947361ec5))
+* **charts:** add existingSecretConfig, changelog automation in release.sh ([28df301](https://github.com/gavinbaumanis/ontoserver-deploy/commit/28df301f127c63f28a5e52717ba29ca9d1a76e48))
+* **charts:** extraVolumes/extraVolumeMounts for ontoserver and indexer ([83f937f](https://github.com/gavinbaumanis/ontoserver-deploy/commit/83f937f3f1970b044ae02eeb30561e3b50db9378))
+* **charts:** opt-in securityContext for all three charts ([ad65b5f](https://github.com/gavinbaumanis/ontoserver-deploy/commit/ad65b5f5085b0292b04887dc2de044f66de7af2b))
+* **chart:** validate imagePullSecret keys must be set together ([eddcbaa](https://github.com/gavinbaumanis/ontoserver-deploy/commit/eddcbaab33a83d27ad415b005426e6d0d04ae799))
+* **ontoserver:** expose OTel metrics and logs exporters ([46a37e2](https://github.com/gavinbaumanis/ontoserver-deploy/commit/46a37e21ba3faf09355c3ac1479712bbfd586631))
+* **ontoserver:** expose StatefulSet podManagementPolicy ([f960874](https://github.com/gavinbaumanis/ontoserver-deploy/commit/f960874038aabbc4319fb72cf0d247ccb38a05ae))
+* **ontoserver:** remove the bundled nginx-ingress subchart ([e2ebfa7](https://github.com/gavinbaumanis/ontoserver-deploy/commit/e2ebfa76a84a912f16238d4d22c4354e02099e4e))
+* **ontoserver:** require isReadOnly for scaled deployments ([0d03095](https://github.com/gavinbaumanis/ontoserver-deploy/commit/0d03095ff4c1900b685b216abc23414a979ea6ec))
+
+
+### Fixed
+
+* **charts:** closure route timeout, ServiceMonitor discovery, name limits ([c6a5ded](https://github.com/gavinbaumanis/ontoserver-deploy/commit/c6a5dedc371ed604cce5b9ae7abc559352b304e3))
+* **charts:** escape credentials in image pull secrets ([70238c9](https://github.com/gavinbaumanis/ontoserver-deploy/commit/70238c9e2237d3c865491e438ae9b908cb178c56))
+* **charts:** resolve pre-merge review blockers in all three charts ([f89fdf5](https://github.com/gavinbaumanis/ontoserver-deploy/commit/f89fdf5fa6b5d48d3e46671871aa18d18624b844))
+* **charts:** roll pods when configuration changes ([9730e8c](https://github.com/gavinbaumanis/ontoserver-deploy/commit/9730e8cfc29d634a647a19f9705355869da31dba))
+* exclude changelog.md by name instead of a helmignore negation ([38cc427](https://github.com/gavinbaumanis/ontoserver-deploy/commit/38cc427ba61bcc68407c49bb5976c3662bcce163))
+* **ontoserver:** expose podManagementPolicy and OTel exporters, restore empty serverPort default ([7cdff43](https://github.com/gavinbaumanis/ontoserver-deploy/commit/7cdff43e931ff0469ce26eb12193a5ce30fce6bf))
+* **ontoserver:** gate the db-files StorageClass on provided.enabled ([e0dd07c](https://github.com/gavinbaumanis/ontoserver-deploy/commit/e0dd07c152e5788dac25bf8556a40a52a47d9465))
+* **ontoserver:** harden the helm test hook pods ([7a0c59a](https://github.com/gavinbaumanis/ontoserver-deploy/commit/7a0c59a7bd08d466868e7bfa4661d455cda89933))
+* **ontoserver:** make PodDisruptionBudget minAvailable/maxUnavailable usable ([d769eb8](https://github.com/gavinbaumanis/ontoserver-deploy/commit/d769eb82ff0995779157b989e56a05bf1bf0963f))
+* **ontoserver:** remove allowScaledReadWrite, scaled read-write is unsupported ([5d5b97a](https://github.com/gavinbaumanis/ontoserver-deploy/commit/5d5b97a8b6b7bbb4957d120e69f4d32dacd90b6b))
+* **ontoserver:** restore empty serverPort default ([d76637a](https://github.com/gavinbaumanis/ontoserver-deploy/commit/d76637af84f55a396b62df90157d31c5745f189d))
+* **ontoserver:** secretConfig non-strings, falsy-zero PDB, schema gap ([b43a9b0](https://github.com/gavinbaumanis/ontoserver-deploy/commit/b43a9b04ec0b63af7fd012aba874baea047f1e6e))
+* **ontoserver:** stop config passthroughs re-enabling writes on scaled deployments ([fd908cd](https://github.com/gavinbaumanis/ontoserver-deploy/commit/fd908cd29c72841decfbaaa13d3b230c7763bed8))
+* **ontoserver:** substitute Recreate when a ReadWriteOnce volume is mounted ([97b28b3](https://github.com/gavinbaumanis/ontoserver-deploy/commit/97b28b34c6337a17f737e2431f81c2496b957fc0))
+* unignore README.md in helm packages ([1bdcd4e](https://github.com/gavinbaumanis/ontoserver-deploy/commit/1bdcd4e1545925206aa56b97ed521edfd356cfe3))
+* use cloud-agnostic description for diskURI params ([d22592a](https://github.com/gavinbaumanis/ontoserver-deploy/commit/d22592a28ec859109bbc0475cea7abd95c618e16))
+* use cloud-agnostic description for files.pv and dbfiles.pv enabled params ([025944b](https://github.com/gavinbaumanis/ontoserver-deploy/commit/025944bec1bdbea9cc7bfdca661d8c67da7738fc))
+
+
+### Documentation
+
+* back-fill and verify the changelogs against the release tags ([cdc04ae](https://github.com/gavinbaumanis/ontoserver-deploy/commit/cdc04ae4720f9da069b960c0ee0981d6c78ce77a))
+* **chart:** replace manual Option B with chart-native imagePullSecret external secret example ([25269db](https://github.com/gavinbaumanis/ontoserver-deploy/commit/25269dbb6f0e8646c7fc4e688d5bc132934deff2))
+* fix ONTOSERVER_INSECURE parameter description — controls inbound TLS listener not outbound verification ([02bcde1](https://github.com/gavinbaumanis/ontoserver-deploy/commit/02bcde16d376da47a5d61788df489bdebce3159a))
+* make pre-provisioned PV examples cloud-agnostic, add EKS guidance ([af2a181](https://github.com/gavinbaumanis/ontoserver-deploy/commit/af2a181c91bb49808e9587852e749076294eca77))
+* **ontoserver:** document podManagementPolicy, exporters and serverPort ([95b54f4](https://github.com/gavinbaumanis/ontoserver-deploy/commit/95b54f42490e56f0838562ea888dc4b1384e908c))
+* **ontoserver:** record cluster validation of the hardened context ([3eca00a](https://github.com/gavinbaumanis/ontoserver-deploy/commit/3eca00a7fd7204413f271c794832fe223c20bfeb))
+* **ontoserver:** regenerate README parameter tables ([12f9c78](https://github.com/gavinbaumanis/ontoserver-deploy/commit/12f9c78daafa2ca6562a89cc2ab3990a916efd91))
+* **ontoserver:** test the literal $ in the $closure route path ([61cf06d](https://github.com/gavinbaumanis/ontoserver-deploy/commit/61cf06d99404212396dc5b5d170a84832975828f))
+
+
+### Changed
+
+* move PV template from ontoserver-extras to ontoserver chart ([a605193](https://github.com/gavinbaumanis/ontoserver-deploy/commit/a605193481c820b0fcc7da209502c30492ba11fe))
+
 ## [0.5.2](https://github.com/aehrc/ontoserver-deploy/compare/ontoserver-v0.5.1...ontoserver-v0.5.2) (2026-08-14)
 
 
